@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  ПРОГНОЗ ПОГОДЫ
+{% endblock %}
+{% load django_bootstrap5 %}
+{% block content %}
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <h1 class="pb-2 mb-0">ПРОГНОЗ ПОГОДЫ</h1>
+  <div class="row">
+    <div class="col-md-3">
+      <form method="get">
+        {% bootstrap_form form %}
+        {% bootstrap_button button_class="btn btn-outline-primary" content="ПОКАЗАТЬ" %}
+      </form>
+    </div>
+
+  </div>
+  <div>
+    <h1 class="pb-2 mb-0">{{ result.name_city }}</h1>
+    <canvas id="myChart"></canvas>
+  </div>
+  <script>
+    const ctx = document.getElementById('myChart');
+      new Chart(ctx, {
+       type: 'bar',
+       data: {
+         labels: [{% for t in result.time %}
+                    {% if t|date:"H" == '00' %}
+                      {{ t|date:"d.m" }}
+                    {% else %}
+                      {{ t|date:"H" }}
+                    {% endif %}, {% endfor %}],
+         datasets: [{
+           label: 'Температура',
+           data: {{ result.temp }},
+           borderWidth: 1
+         }]
+       },
+       options: {
+         scales: {
+           y: {
+             beginAtZero: true
+           }
+         }
+       }
+     });
+   </script>
+{% endblock %}

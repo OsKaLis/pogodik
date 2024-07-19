@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "pogodik"
+version = "0.1.0"
+description = ""
+authors = ["Юра Юшко <oskaLis@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "3.2.16"
+django-bootstrap5 = "22.2"
+openmeteo-requests = "^1.2.0"
+requests-cache = "^1.2.1"
+retry-requests = "^2.0.0"
+numpy = "^2.0.0"
+pandas = "^2.2.2"
+geopy = "^2.4.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
