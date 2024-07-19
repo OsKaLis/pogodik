@@ -6,7 +6,7 @@
 {% load django_bootstrap5 %}
 {% block content %}
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <h1 class="pb-2 mb-0">ПРОГНОЗ ПОГОДЫ</h1>
+
   <div class="row">
     <div class="col-md-3">
       <form method="get">
@@ -14,7 +14,9 @@
         {% bootstrap_button button_class="btn btn-outline-primary" content="ПОКАЗАТЬ" %}
       </form>
     </div>
-
+    <div class="col-md-6">
+      <h1 class="pb-2 mb-0">ПРОГНОЗ ПОГОДЫ</h1>
+    </div>
   </div>
   <div>
     <h1 class="pb-2 mb-0">{{ result.name_city }}</h1>
